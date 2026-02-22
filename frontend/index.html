@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Abi Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>🛍 Abi Shopping</h1>
+
+<!-- LOGIN -->
+<div id="login">
+    <h2>📱 OTP Login</h2>
+
+    <input type="text" id="phone" placeholder="Enter phone number">
+    <button onclick="sendOTP()">Send OTP</button>
+
+    <div id="otpBox" style="display:none;">
+        <input type="text" id="otp" placeholder="Enter OTP">
+        <button onclick="verifyOTP()">Verify</button>
+    </div>
+
+    <p id="msg"></p>
+</div>
+
+<!-- MAIN -->
+<div id="main" style="display:none;">
+
+    <input type="text" id="search" placeholder="Search products..." onkeyup="searchProduct()">
+
+    <select onchange="filterCategory(this.value)">
+        <option value="all">All</option>
+        <option value="fashion">Fashion</option>
+        <option value="electronics">Electronics</option>
+    </select>
+
+    <div id="products"></div>
+
+    <h2>🛒 Cart</h2>
+    <ul id="cart"></ul>
+    <h3 id="total">Total: ₹0</h3>
+
+    <button onclick="placeOrder()">Place Order</button>
+    <button onclick="logout()">Logout</button>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
