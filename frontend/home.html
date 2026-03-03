@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>A-Mart - Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="loadProducts()">
+
+<div class="navbar">
+    🛍 A-Mart
+    <div>
+        <a href="cart.html">🛒 Cart (<span id="cartCount">0</span>)</a>
+        <a href="#" onclick="logout()">Logout</a>
+    </div>
+</div>
+
+<div class="filter">
+    <button onclick="filterCategory('all')">All</button>
+    <button onclick="filterCategory('men')">Men</button>
+    <button onclick="filterCategory('women')">Women</button>
+</div>
+
+<div id="products" class="product-container"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,50 +1,95 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Abi Store</title>
-    <link rel="stylesheet" href="style.css">
+  <title>A-Mart - Login</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>🛍 Abi Shopping</h1>
+<div class="navbar">🛍 A-Mart</div>
 
-<!-- LOGIN -->
-<div id="login">
-    <h2>📱 OTP Login</h2>
+<div class="login-box">
+  <h2>Create Account / Login</h2>
 
-    <input type="text" id="phone" placeholder="Enter phone number">
-    <button onclick="sendOTP()">Send OTP</button>
+  <input type="text" id="name" placeholder="Full Name">
+  <input type="email" id="email" placeholder="Email">
+  <input type="text" id="phone" placeholder="+91XXXXXXXXXX">
 
-    <div id="otpBox" style="display:none;">
-        <input type="text" id="otp" placeholder="Enter OTP">
-        <button onclick="verifyOTP()">Verify</button>
-    </div>
+  <div id="recaptcha-container"></div>
 
-    <p id="msg"></p>
+  <button id="sendBtn">Send OTP</button>
+
+  <div id="otpSection" style="display:none;">
+      <input type="text" id="otp" placeholder="Enter OTP">
+      <button id="verifyBtn">Verify OTP</button>
+  </div>
 </div>
 
-<!-- MAIN -->
-<div id="main" style="display:none;">
+<script type="module">
 
-    <input type="text" id="search" placeholder="Search products..." onkeyup="searchProduct()">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+import { getAuth, RecaptchaVerifier, signInWithPhoneNumber } 
+from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
 
-    <select onchange="filterCategory(this.value)">
-        <option value="all">All</option>
-        <option value="fashion">Fashion</option>
-        <option value="electronics">Electronics</option>
-    </select>
+const firebaseConfig = {
+  apiKey: "AIzaSyBjUep348P44CNmHBRv4TGfcb-up5y4E6g",
+  authDomain: "a-mart-9f37b.firebaseapp.com",
+  projectId: "a-mart-9f37b",
+  storageBucket: "a-mart-9f37b.firebasestorage.app",
+  messagingSenderId: "619606715581",
+  appId: "1:619606715581:web:4ee6013c61739bed935bd4",
+  measurementId: "G-307DZQ5R0H"
+};
 
-    <div id="products"></div>
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
-    <h2>🛒 Cart</h2>
-    <ul id="cart"></ul>
-    <h3 id="total">Total: ₹0</h3>
+// Recaptcha Setup
+window.recaptchaVerifier = new RecaptchaVerifier(
+  auth,
+  'recaptcha-container',
+  {
+    size: 'normal'
+  }
+);
 
-    <button onclick="placeOrder()">Place Order</button>
-    <button onclick="logout()">Logout</button>
+// Send OTP
+document.getElementById("sendBtn").addEventListener("click", async () => {
+  const phone = document.getElementById("phone").value;
 
-</div>
+  try {
+    const confirmationResult = await signInWithPhoneNumber(
+      auth,
+      phone,
+      window.recaptchaVerifier
+    );
 
-<script src="script.js"></script>
+    window.confirmationResult = confirmationResult;
+    document.getElementById("otpSection").style.display = "block";
+    alert("OTP Sent Successfully 📲");
+  } catch (error) {
+    alert(error.message);
+  }
+});
+
+// Verify OTP
+document.getElementById("verifyBtn").addEventListener("click", async () => {
+  const code = document.getElementById("otp").value;
+
+  try {
+    const result = await window.confirmationResult.confirm(code);
+
+    localStorage.setItem("userName", document.getElementById("name").value);
+    localStorage.setItem("userEmail", document.getElementById("email").value);
+
+    alert("Login Successful 🎉");
+    window.location.href = "home.html";
+  } catch (error) {
+    alert("Invalid OTP ❌");
+  }
+});
+
+</script>
+
 </body>
 </html>

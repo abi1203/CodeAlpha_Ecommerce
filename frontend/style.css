@@ -1,27 +1,69 @@
 body {
-    font-family: Arial;
-    background: #f1f3f6;
-    text-align: center;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
 }
 
-h1 {
-    background: purple;
+.navbar {
+    background: linear-gradient(90deg, #8e24aa, #d81b60);
     color: white;
     padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 
-#products {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 15px;
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+.login-box {
+    width: 300px;
+    margin: 100px auto;
     padding: 20px;
+    background: white;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+button {
+    padding: 10px 15px;
+    background: #8e24aa;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #6a1b9a;
+}
+
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .card {
     background: white;
-    padding: 10px;
+    margin: 15px;
+    padding: 15px;
+    width: 200px;
     border-radius: 10px;
-    box-shadow: 0 0 8px gray;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
 }
 
 .card img {
@@ -30,19 +72,7 @@ h1 {
     object-fit: cover;
 }
 
-button {
-    background: purple;
-    color: white;
-    border: none;
-    padding: 6px;
-    margin: 5px;
-    border-radius: 5px;
-}
-#login {
-    background: white;
-    padding: 20px;
-    width: 250px;
-    margin: auto;
-    border-radius: 10px;
-    box-shadow: 0 0 10px gray;
+.filter {
+    text-align: center;
+    margin: 20px;
 }
