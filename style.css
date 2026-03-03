@@ -72,7 +72,26 @@ button:hover {
     object-fit: cover;
 }
 
+<<<<<<< HEAD:frontend/style.css
 .filter {
     text-align: center;
     margin: 20px;
 }
+=======
+button {
+    background: purple;
+    color: white;
+    border: none;
+    padding: 6px;
+    margin: 5px;
+    border-radius: 5px;
+}
+#login {
+    background: white;
+    padding: 20px;
+    width: 250px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px gray;
+}
+>>>>>>> 47946c6cbe59f22aaa2ed17e8e27e3e8081dfcb4:style.css

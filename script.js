@@ -23,6 +23,7 @@ function verifyOTP() {
         alert("Invalid OTP");
     }
 }
+<<<<<<< HEAD:frontend/script.js
 
 function logout() {
     localStorage.removeItem("cart");
@@ -104,3 +105,5 @@ function removeItem(index) {
     localStorage.setItem("cart", JSON.stringify(cart));
     loadCart();
 }
+=======
+>>>>>>> 47946c6cbe59f22aaa2ed17e8e27e3e8081dfcb4:script.js
